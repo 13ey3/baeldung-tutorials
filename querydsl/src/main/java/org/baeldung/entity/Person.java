@@ -1,6 +1,10 @@
 package org.baeldung.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Person {
@@ -15,19 +19,27 @@ public class Person {
     @Column
     private String surname;
 
+    @Column
+    private int age;
+
     Person() {
     }
 
-    public Person(String firstname, String surname) {
+    public Person(final String firstname, final String surname) {
         this.firstname = firstname;
         this.surname = surname;
+    }
+
+    public Person(final String firstname, final String surname, final int age) {
+        this(firstname, surname);
+        this.age = age;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -35,7 +47,7 @@ public class Person {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setFirstname(final String firstname) {
         this.firstname = firstname;
     }
 
@@ -43,8 +55,15 @@ public class Person {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(final int age) {
+        this.age = age;
+    }
 }
